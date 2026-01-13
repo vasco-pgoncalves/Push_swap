@@ -1,52 +1,55 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   validade.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vascopinto <vascopinto@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/13 18:22:28 by vascopinto        #+#    #+#             */
-/*   Updated: 2026/01/13 18:49:44 by vascopinto       ###   ########.fr       */
+/*   Created: 2026/01/12 12:24:43 by vascopinto        #+#    #+#             */
+/*   Updated: 2026/01/13 18:37:51 by vascopinto       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-void ft_error(void)
+int	ft_numbers(int argc, char **argv)
 {
-	ft_printf("Error\n");
-	exit(1);
-}
-int ft_is_digit(char c)
-{
-	if(c >= '0' && c <= '9')
-		return (1);
-	return (0);
-}
-int ft_is_signed(char c)
-{
-	if (c == '-' || c == '+')
-		return (1);
-	return (0);
-}
-int size_ab(char *a)
-{
-	int size_a;
+	char	**token;
+	int		i;
 
-	size_a = 0;
-	if (a)
-		while (a[size_a])
-			size_a++;
-	return (size_a);
+	i = 0;
+	token = ft_separate(argc, argv);
+	if (!token || !token[0])
+		ft_error();
+	i = 0;
+	while (token[i])
+	{
+		if (!ft_is_valid_number(token[i]))
+		{
+			//FREE
+			ft_error();
+		}
+		i++;
+	}
+	return (1);
 }
-int	ft_split_size(char **split)
+int	ft_is_valid_number(char *s)
 {
 	int i;
 
 	i = 0;
-	if (!split)
+
+	if (!s || !s[0])
 		return (0);
-	while (split[i])
+	if (s[i] == '+' || s[i] == '-')
 		i++;
-	return (i);
+	if (!s[i])
+		return(0);
+	while (s[i])
+	{
+		if (!ft_is_digit(s[i]))
+			return (0);
+		i++;
+	}
+	return (1);
 }
