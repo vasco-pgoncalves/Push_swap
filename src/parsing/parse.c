@@ -6,7 +6,7 @@
 /*   By: vascopinto <vascopinto@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 18:20:12 by vascopinto        #+#    #+#             */
-/*   Updated: 2026/01/13 18:28:25 by vascopinto       ###   ########.fr       */
+/*   Updated: 2026/01/14 17:10:47 by vascopinto       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,29 +42,3 @@ int *ft_parse(int argc, char **argv, int *out_size)
 	return (arr);
 }
 
-int main(int argc, char **argv)
-{
-	int *arr;
-	int size;
-	int i;
-
-	if (argc < 2)
-		return (0); // nothing to do
-
-	// Parse input safely
-	arr = ft_parse(argc, argv, &size);
-
-	// Print numbers to verify parser works
-	i = 0;
-	while (i < size)
-	{
-		ft_putnbr_fd(arr[i], 1);  // prints number
-		ft_putchar_fd('\n', 1);   // newline
-		i++;
-	}
-
-	// Clean up
-	free(arr);
-
-	return (0);
-}

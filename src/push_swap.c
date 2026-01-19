@@ -1,20 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vascopinto <vascopinto@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/08 14:18:10 by vascopinto        #+#    #+#             */
-/*   Updated: 2026/01/08 17:21:26 by vascopinto       ###   ########.fr       */
+/*   Created: 2026/01/14 17:22:34 by vascopinto        #+#    #+#             */
+/*   Updated: 2026/01/14 17:27:20 by vascopinto       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/push_swap.h"
+#include "../includes/push_swap.h"
 
-t_stack	ft_last(t_stack	*node)
+int main(int argc, char **argv)
 {
-	while(node && node->next)
-		node = (node)->next;
-	return(*node);
+	int		*arr;
+	int		size;
+	t_stack	a;
+	t_stack	b;
+
+	if (argc < 2)
+		return (0);
+	arr = ft_parse(argc, argv, &size);
+	init_stack(&a, arr, size);
+	init_stack(&b, NULL, 0);
+	if (!is_sorted(&a))
+		turk_sort(&a, &b);
+	free_stack(&a);
+	free_stack(&b);
+	free(arr);
+	return (0);
 }

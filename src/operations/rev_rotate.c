@@ -6,7 +6,7 @@
 /*   By: vascopinto <vascopinto@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 16:58:48 by vascopinto        #+#    #+#             */
-/*   Updated: 2026/01/08 17:35:29 by vascopinto       ###   ########.fr       */
+/*   Updated: 2026/01/16 15:33:08 by vascopinto       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_rev_rotate(t_stack **node)
 	prev = *node;
 	while (prev->next->next)
 		prev = prev->next;
-	tail = ft_last(*node);
+	tail = ft_last_node(*node);
 	prev->next = NULL;
 	tail->next = *node;
 	*node = tail;
