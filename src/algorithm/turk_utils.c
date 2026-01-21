@@ -6,7 +6,7 @@
 /*   By: vascopinto <vascopinto@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 12:37:45 by vascopinto        #+#    #+#             */
-/*   Updated: 2026/01/16 15:33:01 by vascopinto       ###   ########.fr       */
+/*   Updated: 2026/01/21 11:32:35 by vascopinto       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	stack_len(t_stack *stack)
 	
 	len = 0;
 	if (!stack)
-		return(NULL);
+		return(0);
 	while(stack)
 	{
 		len++;
@@ -78,9 +78,3 @@ bool stack_sorted(t_stack *stack)
 	}
 	return (true);
 }
-
-t_stack	*find_max_node(t_stack *stack);
-t_stack	*find_min_node(t_stack *stack);
-int	stack_len(t_stack *stack);
-t_stack	*last_node(t_stack *stack);
-bool stack_sorted(t_stack *stack);

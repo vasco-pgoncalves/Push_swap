@@ -7,18 +7,40 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 INCLUDES = -I includes -I libft -I ft_printf
 
-# Push_swap source files (all parsing files)
-SRC = src/parsing/parse.c \
-      src/parsing/max_range.c \
-      src/parsing/separate.c \
-      src/parsing/duplicates.c \
-      src/parsing/validade.c \
-      src/parsing/utils.c
+# ==============================
+# Source files
+# ==============================
 
-# Libft source files (all of them)
+# Parsing files
+SRC_PARSING = src/parsing/parse.c \
+              src/parsing/max_range.c \
+              src/parsing/separate.c \
+              src/parsing/duplicates.c \
+              src/parsing/validade.c \
+              src/parsing/utils.c
+
+# Operations files
+SRC_OPERATIONS = src/operations/push.c \
+                 src/operations/rotate.c \
+                 src/operations/rev_rotate.c \
+                 src/operations/swap.c
+
+# Algorithm files
+SRC_ALGORITHM = src/algorithm/turk.c \
+                src/algorithm/turk_utils.c \
+                src/algorithm/sorting_utils.c \
+                src/algorithm/b_to_a.c
+
+# Main file
+SRC_MAIN = src/push_swap.c
+
+# Combine all source files
+SRC = $(SRC_PARSING) $(SRC_OPERATIONS) $(SRC_ALGORITHM) $(SRC_MAIN)
+
+# Libft source files
 LIBFT_SRC = $(wildcard libft/*.c)
 
-# ft_printf source files (all of them)
+# ft_printf source files
 PRINTF_SRC = $(wildcard ft_printf/*.c)
 
 # Object files

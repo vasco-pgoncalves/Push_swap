@@ -6,7 +6,7 @@
 /*   By: vascopinto <vascopinto@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 17:26:17 by vascopinto        #+#    #+#             */
-/*   Updated: 2026/01/16 16:43:31 by vascopinto       ###   ########.fr       */
+/*   Updated: 2026/01/21 12:29:44 by vascopinto       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,4 +78,50 @@ void calculate_costs(t_stack *a, t_stack *b)
 			a->push_cost += len_b - a->target->index;
 		a = a->next;
 	}
+}
+void push_cheapest(t_stack **a, t_stack **b)
+{
+	t_stack *cheapest;
+
+	cheapest = get_cheapest(*a);
+	if (cheapest->above_median && cheapest->target->above_median)
+	{
+		while (*a != cheapest && *b != cheapest->target)
+			ft_rr(a, b);
+	}
+	else if (!cheapest->above_median && !cheapest->target->above_median)
+	{
+		while (*a != cheapest && *b != cheapest->target)
+			ft_rrr(a, b);
+	}
+	update_positions(*a);
+	update_positions(*b);
+	move_to_top(a, cheapest, 'a');
+	move_to_top(b, cheapest->target, 'b');
+	ft_pb(a, b);
+}
+void turk_loop(t_stack **a, t_stack **b)
+{
+	ft_pb(a, b);
+	ft_pb(a, b);
+
+	while (stack_len(*a) > 3)
+	{
+		update_positions(*a);
+		update_positions(*b);
+		set_targets_a_to_b(*a, *b);
+		calculate_costs(*a, *b);
+		push_cheapest(a, b);
+	}
+	sort_3(a);
+	while (*b)
+	{
+		update_positions(*a);
+		update_positions(*b);
+		set_targets_b_to_a(*b, *a);
+		move_to_top(a, (*b)->target, 'a');
+		ft_pa(a, b);
+	}
+	update_positions(*a);
+	move_to_top(a, find_min_node(*a), 'a');
 }

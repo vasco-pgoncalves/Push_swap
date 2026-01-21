@@ -12,7 +12,6 @@ typedef struct s_stack
 	int		index;
 	int		push_cost;
 	bool	above_median;
-	bool	cheapest;
 	struct	s_stack	*target;
 	struct	s_stack	*next;
 	struct	s_stack	*prev;
@@ -57,12 +56,20 @@ t_stack	*ft_last_node(t_stack *stack);
 t_stack	*find_max_node(t_stack *stack);
 t_stack	*find_min_node(t_stack *stack);
 int		stack_len(t_stack *stack);
-t_stack	*last_node(t_stack *stack);
+t_stack	*ft_last_node(t_stack *stack);
 bool	stack_sorted(t_stack *stack);
 void	sort_3(t_stack **a);
 void	move_a_to_top(t_stack **a, t_stack *node);
 void	move_b_to_top(t_stack **b, t_stack *node);
 void	move_to_top(t_stack **stack, t_stack *node, char name);
+t_stack	*get_cheapest(t_stack *a);
+void	push_cheapest (t_stack **a, t_stack **b);
+void	turk_loop(t_stack **a, t_stack **b);
+void	init_stack(t_stack **stack, int *arr, int size);
+void	set_targets_b_to_a(t_stack *b, t_stack *a);
+void	set_targets_a_to_b(t_stack *a, t_stack *b);
+void	update_positions(t_stack *stack);
+void	calculate_costs(t_stack *a, t_stack *b);
 
 #endif
 

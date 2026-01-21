@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   idk.c                                              :+:      :+:    :+:   */
+/*   sorting_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vascopinto <vascopinto@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 19:34:22 by vascopinto        #+#    #+#             */
-/*   Updated: 2026/01/16 17:36:38 by vascopinto       ###   ########.fr       */
+/*   Updated: 2026/01/19 18:10:57 by vascopinto       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,22 @@ void	move_to_top(t_stack **stack, t_stack *node, char name)
 		move_a_to_top(stack, node);
 	else if (name == 'b')
 		move_b_to_top(stack, node);
+}
+t_stack	*get_cheapest(t_stack *a)
+{
+	t_stack	*cheapest;
+	int	min_cost;
+
+	min_cost = INT_MAX;
+	cheapest = NULL;
+	while (a)
+	{
+		if (a->push_cost < min_cost)
+		{
+			min_cost = a->push_cost;
+			cheapest = a;
+		}
+		a = a->next;
+	}
+	return (cheapest);
 }
