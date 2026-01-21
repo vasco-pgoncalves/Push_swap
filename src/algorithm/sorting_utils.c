@@ -6,7 +6,7 @@
 /*   By: vascopinto <vascopinto@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 19:34:22 by vascopinto        #+#    #+#             */
-/*   Updated: 2026/01/19 18:10:57 by vascopinto       ###   ########.fr       */
+/*   Updated: 2026/01/21 13:13:12 by vascopinto       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void	move_a_to_top(t_stack **a, t_stack *node)
 			ft_rra(a);
 	}
 }
-
 void	move_b_to_top(t_stack **b, t_stack *node)
 {
 	while (*b != node)
@@ -46,7 +45,6 @@ void	move_b_to_top(t_stack **b, t_stack *node)
 			ft_rrb(b);
 	}
 }
-
 void	move_to_top(t_stack **stack, t_stack *node, char name)
 {
 	if (name == 'a')
